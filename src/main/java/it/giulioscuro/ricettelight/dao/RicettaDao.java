@@ -12,6 +12,7 @@ public interface RicettaDao extends Dao<Ricetta> {
 
     Long getRicettaCount();
 
+
   //  void updateAddress(long id, String newAddress);
 
     int[][] bulkSave(List<Ricetta> newRicette);
