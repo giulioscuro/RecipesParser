@@ -211,7 +211,7 @@ public class JdbcTemplateRicettaDao implements RicettaDao {
 
 
 	@Override
-	public Ricetta findRicettaByIdFonte(String fonte, String idFonte) {
+	public Ricetta   findRicettaByIdFonte(String fonte, String idFonte) {
 		List<Ricetta> ricette = namedParameterJdbcTemplate.getJdbcOperations()
 				.query("select * from " + RICETTA_TABLE_NAME+ " where SIGLA_FONTE_FK =? and ID_FONTE =?", new Object[] { fonte,idFonte },
 				(resultSet, i) -> {
