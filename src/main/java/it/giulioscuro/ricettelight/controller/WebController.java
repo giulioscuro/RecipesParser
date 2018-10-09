@@ -47,7 +47,7 @@ public class WebController {
 		 String[] arraySearch =  searchString.split(",");
 		   List<Ricetta> ricette = service.search(arraySearch);
 	        model.addAttribute("ricette", ricette);
-	        return "ricette";
+	        return "ricete";
 	    }
 	  
 	  @RequestMapping("/web/ricette2")
