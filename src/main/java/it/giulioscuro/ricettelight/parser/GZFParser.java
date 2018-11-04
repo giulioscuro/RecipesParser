@@ -109,11 +109,11 @@ public class GZFParser implements RicetteParser {
 		List<Ricetta> ricetteList = new ArrayList<Ricetta>();
 		
 		try {
-
+			String theUrl = fonte.getListUrl();
+			log.debug(theUrl);
 			for (int i = 1; (i <= fonte.getPageToScan() || scanAllPages) ; i++) {
 
-				String theUrl = fonte.getListUrl();
-				log.debug(theUrl);
+
 
 				String pageUrl = theUrl.concat("/page").concat(String.valueOf(i));
 				log.debug(pageUrl);

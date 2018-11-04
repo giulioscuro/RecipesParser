@@ -73,7 +73,7 @@ public class ApplicationConfig {
 		f.setListUrl(env.getProperty("fonte.url.list.giallozafferano"));
 		f.setSigla(env.getProperty("fonte.sigla.giallozafferano"));
 		f.setUrl(env.getProperty("fonte.url.giallozafferano"));
-		f.setPageToScan(20);
+		f.setPageToScan(1);
 		return f;
 	}
 
