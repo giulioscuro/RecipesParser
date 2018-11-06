@@ -70,10 +70,10 @@ public class JdbcTemplateRicettaDao implements RicettaDao {
 	public long save(Ricetta ricetta) {
 
 		log.debug("Saving ricetta: " + ricetta);
-		
+
 		String sql = "insert into "+RICETTA_TABLE_NAME
-				+ " (ID,SIGLA_FONTE_FK,TITOLO, DESCRIZIONE, LINK_URL,IMAGE_URL,ISTRUZIONI,ID_FONTE)"
-				+ " values (RICETTE_SEQ.nextval,:SIGLA_FONTE_FK,:TITOLO, :DESCRIZIONE, :LINK_URL,:IMAGE_URL,:ISTRUZIONI,:ID_FONTE)";
+				+ " (id,SIGLA_FONTE_FK,TITOLO, DESCRIZIONE, LINK_URL,IMAGE_URL,ISTRUZIONI,ID_FONTE)"
+				+ " values ( nextval('ricette_seq'),:SIGLA_FONTE_FK,:TITOLO, :DESCRIZIONE, :LINK_URL,:IMAGE_URL,:ISTRUZIONI,:ID_FONTE)";
 
 		KeyHolder holder = new GeneratedKeyHolder();
 		//SqlParameterSource parameters = new BeanPropertySqlParameterSource(ricetta);
@@ -87,7 +87,7 @@ public class JdbcTemplateRicettaDao implements RicettaDao {
 		        .addValue("ISTRUZIONI",ricetta.getIstruzioni())
 	   	        .addValue("ID_FONTE",ricetta.getId());
    
-		String [] columnames = {"ID"};
+		String [] columnames = {"id"};
 		
 		
 		namedParameterJdbcTemplate.update(sql, parameters, holder,columnames);
@@ -213,7 +213,7 @@ public class JdbcTemplateRicettaDao implements RicettaDao {
 	@Override
 	public Ricetta   findRicettaByIdFonte(String fonte, String idFonte) {
 		List<Ricetta> ricette = namedParameterJdbcTemplate.getJdbcOperations()
-				.query("select * from " + RICETTA_TABLE_NAME+ " where SIGLA_FONTE_FK =? and ID_FONTE =?", new Object[] { fonte,idFonte },
+				.query("select * from " + RICETTA_TABLE_NAME+ " where SIGLA_FONTE_FK =? and ID_FONTE =?", new Object[] { fonte,Integer.valueOf(idFonte) },
 				(resultSet, i) -> {
 					return toRicetta(resultSet);
 				});

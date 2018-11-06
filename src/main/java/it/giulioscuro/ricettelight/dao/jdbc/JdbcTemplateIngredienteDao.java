@@ -56,7 +56,7 @@ public class JdbcTemplateIngredienteDao implements IngredienteDao {
 		
 			String sql = "insert into " + INGREDIENTI_TABLE_NAME
 					+ " (id,nome,image_url, descrizione)"
-					+ " values (INGREDIENTI_SEQ.nextval,:nome,:image_url, :descrizione)";
+					+ " values (nextval('ingredienti_seq'),:nome,:image_url, :descrizione)";
 
 			KeyHolder holder = new GeneratedKeyHolder();
 			//SqlParameterSource parameters = new BeanPropertySqlParameterSource(ricetta);
@@ -68,7 +68,7 @@ public class JdbcTemplateIngredienteDao implements IngredienteDao {
 			       // .addValue("ID_RICETTA_FK",ingrediente.getId_ricetta());
 			   
 	   
-			String [] columnames = {"ID"};
+			String [] columnames = {"id"};
 			
 			namedParameterJdbcTemplate.update(sql, parameters, holder,columnames);
 			Long newId = holder.getKey().longValue();
