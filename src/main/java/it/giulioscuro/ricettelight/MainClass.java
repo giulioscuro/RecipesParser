@@ -51,7 +51,7 @@ public class MainClass implements CommandLineRunner {
 		// FatSecretService fservice = new FatSecretService();
 		// fservice.searchFoodItems();
 		//ricettaService.clearDatabase();
-		populateDB();
+		//populateDB();
 		//testHibernate();
 		
 	}
