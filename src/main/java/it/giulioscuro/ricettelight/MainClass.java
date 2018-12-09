@@ -29,11 +29,6 @@ public class MainClass implements CommandLineRunner {
 
 	private static final Logger log = LoggerFactory.getLogger(MainClass.class);
 
-	@Autowired
-	private RicettaDao dao;
-
-	@Autowired
-	private IngredienteDao daoIngrediente;
 
 	@Autowired
 	private RicetteServiceImpl ricettaService;
@@ -50,10 +45,9 @@ public class MainClass implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// FatSecretService fservice = new FatSecretService();
 		// fservice.searchFoodItems();
-		//ricettaService.clearDatabase();
-		//populateDB();
-		//testHibernate();
-		
+		ricettaService.clearDatabase();
+		populateDB();
+
 	}
 
 	public void populateDB() {
@@ -65,43 +59,6 @@ public class MainClass implements CommandLineRunner {
 		}
 	}
 
-	public void testHibernate() {
-
-		SessionFactory sessionFactory = new Configuration().configure().addAnnotatedClass(Ingrediente.class)
-				.addAnnotatedClass(DettaglioIngrediente.class).addAnnotatedClass(Ricetta.class)
-				.addAnnotatedClass(Fonte.class).buildSessionFactory();
-
-		Session session = sessionFactory.getCurrentSession();
-
-		try {
-			session.beginTransaction();
-			/*
-			 * Ingrediente ingr= new Ingrediente(); ingr.setNome("Pomodorino2");
-			 * DettaglioIngrediente di = new DettaglioIngrediente(); di.setCalorie(12);
-			 * ingr.setDettaglioIngrediente(di); ; session.save(ingr);
-			 */
-
-			Ingrediente ing = session.get(Ingrediente.class, 1343l);
-
-			Fonte f = session.get(Fonte.class, "gzf");
-		
-
-			if (ing != null) {
-
-				System.out.println("Deleting -->" + ing.getNome());
-				session.delete(ing);
-			}
-
-			if (f != null) {
-				System.out.println("Numemero ricette "+f.getSigla() + " " + f.getRicette().size());
-			}
-
-			session.getTransaction().commit();
-		} finally {
-			// TODO: handle finally clause
-			sessionFactory.close();
-		}
-	}
 
 	
 

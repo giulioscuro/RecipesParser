@@ -10,21 +10,20 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-@Entity
-@Table(name="FONTE")
+
 public class Fonte {
 	
-	@Transient
+
 	public static final int MAX_ELEMENTS_IN_PAGE = 15;
 	
-	@Id
+
 	private String sigla;
 	
-	@Column(name="SITE_URL")
+
 	private String url;
 	
 	
-	@Column(name="SITE_ICON")
+
 	private String icon;
 	
 	public String getIcon() {
@@ -35,15 +34,14 @@ public class Fonte {
 		this.icon = icon;
 	}
 
-	@Transient
 	private String listUrl;
 	
-	@Transient
+
 	private int pageToScan;
 	
 	
 	
-	@OneToMany(mappedBy="fonte")
+
 	List<Ricetta> ricette;
 	
 	public List<Ricetta> getRicette() {

@@ -1,39 +1,22 @@
 package it.giulioscuro.ricettelight.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-
-
-@Entity
-@Table(name="DETTAGLI_INGREDIENTE")
 public class DettaglioIngrediente {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
-	@SequenceGenerator(name = "id_Sequence", sequenceName = "DETTAGLIO_SEQ")
+
 	long id;
 	
-	@Column(name = "calorie")
+
 	int calorie;
 	
-	@Column(name = "grassi")
+
 	int grassi;
 	
-	@Column(name = "carboidrati")
+
 	int carboidrati;
 	
-	@Column(name = "proteine")
+
 	int proeteine;
-	
-	@OneToOne(mappedBy="dettaglioIngrediente" ,cascade=CascadeType.ALL)
+
 	private Ingrediente ingrediente;
 
 	//costruttore
@@ -87,8 +70,6 @@ public class DettaglioIngrediente {
 	public void setProeteine(int proeteine) {
 		this.proeteine = proeteine;
 	}
-	
-
 
 
 }

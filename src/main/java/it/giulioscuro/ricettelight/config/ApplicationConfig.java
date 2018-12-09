@@ -49,7 +49,7 @@ public class ApplicationConfig {
 	}
 
 	@Bean
-	public RicettaDao ricettaDao() {
+	public JdbcTemplateRicettaDao ricettaDao() {
 		return new JdbcTemplateRicettaDao();
 	}
 

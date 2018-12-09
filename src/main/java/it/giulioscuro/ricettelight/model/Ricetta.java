@@ -15,24 +15,19 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 
-@Entity
-@Table(name = "TABLE_RICETTE")
+
 public class Ricetta implements Serializable{
 	
-	
-
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -572036528811619118L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
-	@SequenceGenerator(name = "id_Sequence", sequenceName = "RICETTE_SEQ")
+
 	private long id;
 	
-	@Column(name="ID_FONTE")
+
 	private long id_fonte;
 
 	public long getId_fonte() {
@@ -43,34 +38,24 @@ public class Ricetta implements Serializable{
 		this.id_fonte = id_fonte;
 	}
 
-	@Column
+
 	private String titolo;
 	
 
-	@Column(name="IMAGE_URL")
 	private String imageUrl;
 	
 
-	@Column(name="LINK_URL")
 	private String linkUrl;
 	
 
-	@Column
 	private String descrizione;
 	
 
-	@Column
 	private String istruzioni;
-	
-	@Transient
+
 	List<Ingrediente> ingredienti;
-	
-	@ManyToOne
-	@JoinColumn(name="SIGLA_FONTE")
+
 	private Fonte fonte;
-
-	
-
 
 	public Fonte getFonte() {
 		return fonte;
