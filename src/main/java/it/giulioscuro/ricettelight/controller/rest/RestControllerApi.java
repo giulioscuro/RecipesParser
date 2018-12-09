@@ -18,9 +18,6 @@ import it.giulioscuro.ricettelight.model.Ingrediente;
 import it.giulioscuro.ricettelight.model.Ricetta;
 import it.giulioscuro.ricettelight.service.RicetteService;
 
-
-
-
 @RestController
 public class RestControllerApi {
 	
@@ -28,8 +25,9 @@ public class RestControllerApi {
 	
 	@Autowired
 	IngredienteDao ingredienteDao;
-	
-	@Autowired RicetteService service;
+
+	@Autowired
+	RicetteService service;
 	
 
 	  @RequestMapping("/ingredienti")

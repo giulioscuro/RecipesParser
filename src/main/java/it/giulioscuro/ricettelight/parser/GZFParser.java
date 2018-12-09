@@ -113,8 +113,6 @@ public class GZFParser implements RicetteParser {
 			log.debug(theUrl);
 			for (int i = 1; (i <= fonte.getPageToScan() || scanAllPages) ; i++) {
 
-
-
 				String pageUrl = theUrl.concat("/page").concat(String.valueOf(i));
 				log.debug(pageUrl);
 				
@@ -135,7 +133,6 @@ public class GZFParser implements RicetteParser {
 						 Ricetta r = parseDetail(ricettaElement);
 						  ricetteList.add(r);
 					}
-					 
 				}
 			}
 
